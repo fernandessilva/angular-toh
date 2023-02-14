@@ -1,8 +1,16 @@
 <mat-toolbar color="primary">
-  <span>League of Legends lores</span>
+  <span>{{ title }}</span>
+  <span fxFlex></span>
+  <button
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    <mat-icon>favorite</mat-icon>
+  </button>
 </mat-toolbar>
 
 <div class="content">
   <router-outlet></router-outlet>
-<app-messages></app-messages>
+  <app-messages></app-messages>
 </div>

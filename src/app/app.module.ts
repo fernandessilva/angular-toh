@@ -10,6 +10,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MessagesComponent } from './messages/messages.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { AppRoutingModule } from './app-routing.module';
+import {MatIconModule} from '@angular/material/icon';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { AppRoutingModule } from './app-routing.module';
     MatButtonModule,
     MatExpansionModule,
     AppRoutingModule,
+    MatIconModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
