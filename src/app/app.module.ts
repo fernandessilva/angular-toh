@@ -8,11 +8,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MessagesComponent } from './messages/messages.component';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { AppRoutingModule } from './app-routing.module';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -20,6 +25,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,11 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     AppRoutingModule,
     MatIconModule,
     FlexLayoutModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatCardModule,
+    MatListModule,
+    MatInputModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
