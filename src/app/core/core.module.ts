@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from './material/material.module';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from './material/material.module';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { RouterModule } from '@angular/router';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+
 
 const COMPONENTS = [ToolbarComponent, MessagesComponent];
 const MODULES = [FlexLayoutModule, MaterialModule, RouterModule];
