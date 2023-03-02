@@ -1,7 +1,11 @@
-<h1>Ad Carries:</h1>
-<div>
-  <button>Voltar</button>
+<h1>Heroes</h1>
+
+<div fxLayoutAlign="end end"  [style.marginBottom]="'30px'" >
+  <button mat-fab color="warn">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>
+
 <mat-table [dataSource]="heroes" class="mat-elevation-z8">
   <!-- User name Definition -->
   <ng-container matColumnDef="id">
@@ -15,6 +19,19 @@
     <mat-cell *matCellDef="let row"> {{ row.name }} </mat-cell>
   </ng-container>
 
+  <!-- action buttons -->
+  <ng-container matColumnDef="actions" fxLayoutAlign="end end">
+		<mat-header-cell *matHeaderCellDef></mat-header-cell>
+		<mat-cell *matCellDef="let row;">
+      <button mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon color="warn">delete</mat-icon>
+      </button>
+    </mat-cell>
+	</ng-container>
+
   <!-- Header and Row Declarations -->
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row
@@ -22,4 +39,8 @@
     *matRowDef="let row; columns: displayedColumns"
     [routerLink]="['/heroes', row.name]"
   ></mat-row>
+
+
+
+
 </mat-table>

@@ -17,6 +17,7 @@ export class HeroService {
   }
 
   getHero(name: string): Observable<Hero> {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const hero = HEROES.find((hero) => hero.name === name)!;
     this.MessageService.add(`HeroService: fetched hero id=${name}`);
     return of(hero);

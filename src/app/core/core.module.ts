@@ -5,7 +5,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MessagesComponent } from './components/messages/messages.component';
 import { RouterModule } from '@angular/router';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './components/page-not-found.component';
 
 
 const COMPONENTS = [ToolbarComponent, MessagesComponent, PageNotFoundComponent];

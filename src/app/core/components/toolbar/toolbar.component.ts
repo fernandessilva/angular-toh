@@ -7,5 +7,5 @@ import { MenuItem } from '../../models/menu-item.model';
 })
 export class ToolbarComponent {
   @Input() title = '';
-  @Input() menuItems: MenuItem [] = [];
+  @Input() menuItems: MenuItem[] = [];
 }

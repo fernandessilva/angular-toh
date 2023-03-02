@@ -7,7 +7,7 @@ import { MenuItem } from './core/models/menu-item.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'front-end project';
+  title = 'Angular Project';
   menuItems: MenuItem [] = [
     {
       icon: 'dashboard',
