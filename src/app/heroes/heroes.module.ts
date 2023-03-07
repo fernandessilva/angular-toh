@@ -12,7 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
-  declarations: [HeroesComponent, HeroDetailComponent],
+  declarations: [HeroesComponent, HeroDetailComponent ],
   imports: [
     CommonModule, MaterialModule, FormsModule, HeroesRoutingModule, FlexLayoutModule,
   ]
