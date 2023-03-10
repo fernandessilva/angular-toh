@@ -25,6 +25,7 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero(): void {
+<<<<<<< HEAD:src/app/hero-detail/hero-detail.component.ts
     const paramid = this.route.snapshot.paramMap.get('id');
     if (paramid === 'new') {
       this.isEditing = false;
@@ -34,12 +35,24 @@ export class HeroDetailComponent implements OnInit {
       const id = Number(paramid);
 
       this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
+=======
+    const paramName = this.route.snapshot.paramMap.get('id');
+    if (paramName === 'new') {
+      this.isEditing = false;
+      this.hero = { name: ''} as Hero;
+    } else {
+      this.isEditing = true;
+      const paramId = Number(this.route.snapshot.paramMap.get('id'));
+
+      this.heroService.getHero(paramId).subscribe((hero) => (this.hero = hero));
+>>>>>>> master:src/app/heroes/components/hero-detail/hero-detail.component.ts
     }
   }
   goBack(): void {
     this.location.back();
   }
 
+<<<<<<< HEAD:src/app/hero-detail/hero-detail.component.ts
   update(): void {
     this.heroService.update(this.hero).subscribe((hero) => this.goBack());
   }
@@ -47,4 +60,9 @@ export class HeroDetailComponent implements OnInit {
   // save(): void {
   //   this.heroService.update(this.hero).subscribe((hero) => this.goBack());
   // }
+=======
+  save(): void {
+    this.heroService.update(this.hero).subscribe((hero) => console.log(hero))
+  }
+>>>>>>> master:src/app/heroes/components/hero-detail/hero-detail.component.ts
 }
