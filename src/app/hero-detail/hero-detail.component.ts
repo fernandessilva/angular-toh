@@ -25,7 +25,6 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero(): void {
-<<<<<<< HEAD:src/app/hero-detail/hero-detail.component.ts
     const paramid = this.route.snapshot.paramMap.get('id');
     if (paramid === 'new') {
       this.isEditing = false;
@@ -42,7 +41,6 @@ export class HeroDetailComponent implements OnInit {
     this.location.back();
   }
 
-<<<<<<< HEAD:src/app/hero-detail/hero-detail.component.ts
   update(): void {
     this.heroService.update(this.hero).subscribe((hero) => this.goBack());
   }
