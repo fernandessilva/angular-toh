@@ -6,10 +6,11 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { RouterModule } from '@angular/router';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { PageNotFoundComponent } from './components/page-not-found.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 const COMPONENTS = [ToolbarComponent, MessagesComponent, PageNotFoundComponent];
-const MODULES = [FlexLayoutModule, MaterialModule, RouterModule];
+const MODULES = [FlexLayoutModule, MaterialModule, RouterModule, MatDialogModule];
 
 @NgModule({
   declarations: [COMPONENTS],
