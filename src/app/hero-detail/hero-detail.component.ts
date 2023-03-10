@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Hero } from 'src/app/core/models/hero.model';
-import { HeroService } from 'src/app/core/services/hero.service';
+import { HeroService } from 'src/app/services/hero.service';
 
 @Component({
   selector: 'app-hero-detail',
@@ -12,6 +12,7 @@ import { HeroService } from 'src/app/core/services/hero.service';
 export class HeroDetailComponent implements OnInit {
   // ! or | undefined
   hero!: Hero;
+  isEditing!: boolean;
 
   constructor(
     private heroService: HeroService,
@@ -24,12 +25,26 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero(): void {
-    const name = String(this.route.snapshot.paramMap.get('name'));
+    const paramid = this.route.snapshot.paramMap.get('id');
+    if (paramid === 'new') {
+      this.isEditing = false;
+      this.hero = { name: '' } as Hero;
+    } else {
+      this.isEditing = true;
+      const id = Number(paramid);
 
-    this.heroService.getHero(name).subscribe((hero) => (this.hero = hero));
+      this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
+    }
   }
-
   goBack(): void {
     this.location.back();
+  }
+
+  update(): void {
+    this.heroService.update(this.hero).subscribe((hero) => this.goBack());
+  }
+
+  save(): void {
+    this.heroService.update(this.hero).subscribe((hero) => this.goBack());
   }
 }

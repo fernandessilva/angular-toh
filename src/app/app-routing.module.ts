@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: 'heroes',
     loadChildren: () =>
-      import('./heroes/heroes.module').then((m) => m.HeroesModule),
+      import('./heroes.module').then((m) => m.HeroesModule),
   },
   {
     path: '**',

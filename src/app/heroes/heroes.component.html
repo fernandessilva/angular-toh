@@ -1,7 +1,7 @@
 <h1>Heroes</h1>
 
-<div fxLayoutAlign="end end"  [style.marginBottom]="'30px'" >
-  <button mat-fab color="warn">
+<div fxLayoutAlign="end end" [style.marginBottom]="'30px'">
+  <button mat-fab color="warn" routerLink="new">
     <mat-icon>add</mat-icon>
   </button>
 </div>
@@ -19,28 +19,23 @@
     <mat-cell *matCellDef="let row"> {{ row.name }} </mat-cell>
   </ng-container>
 
+  <!-- Header and Row Declarations -->
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row
+    class="mat-row"
+    *matRowDef="let row; columns: displayedColumns"
+  ></mat-row>
+
   <!-- action buttons -->
   <ng-container matColumnDef="actions" fxLayoutAlign="end end">
-		<mat-header-cell *matHeaderCellDef></mat-header-cell>
-		<mat-cell *matCellDef="let row;">
-      <button mat-icon-button>
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <button mat-icon-button [routerLink]="['/heroes', row.id]">
         <mat-icon>edit</mat-icon>
       </button>
       <button mat-icon-button>
         <mat-icon color="warn">delete</mat-icon>
       </button>
     </mat-cell>
-	</ng-container>
-
-  <!-- Header and Row Declarations -->
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row
-    class="mat-row"
-    *matRowDef="let row; columns: displayedColumns"
-    [routerLink]="['/heroes', row.name]"
-  ></mat-row>
-
-
-
-
+  </ng-container>
 </mat-table>

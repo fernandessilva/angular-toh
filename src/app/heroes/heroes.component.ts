@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from 'src/app/core/models/hero.model';
-import { HeroService } from 'src/app/core/services/hero.service';
+import { HeroService } from 'src/app/services/hero.service';
 
 @Component({
   selector: 'app-heroes',
@@ -8,7 +8,7 @@ import { HeroService } from 'src/app/core/services/hero.service';
   styleUrls: ['./heroes.component.scss'],
 })
 export class HeroesComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'actions']
+  displayedColumns: string[] = ['id', 'name', 'actions'];
   heroes: Hero[] = [];
 
   constructor(private heroService: HeroService) {}
@@ -19,5 +19,14 @@ export class HeroesComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes));
+  }
+  create(name: string): void {
+    name = name.trim();
+    if (!name) {
+      return;
+    }
+    this.heroService.create({ name } as Hero).subscribe((hero) => {
+      this.heroes.push(hero);
+    });
   }
 }

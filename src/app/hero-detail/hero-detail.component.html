@@ -1,0 +1,25 @@
+  <h1>{{ isEditing ? "Update" : "Create" }} Hero</h1>
+
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field *ngIf="isEditing">
+        <mat-label>Hero id</mat-label>
+        <input matInput [value]="hero.id" />
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-content flexLayout="column">
+      <mat-form-field>
+        <mat-label>Hero Name</mat-label>
+        <input matInput [value]="hero.name" />
+      </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-fab color="primary" (click)="save()" class="save">
+        <mat-icon>save</mat-icon>
+      </button>
+      <button mat-fab color="primary" (click)="goBack()" class="back">
+        <mat-icon>home</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
