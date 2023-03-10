@@ -34,6 +34,7 @@ export class HeroDetailComponent implements OnInit {
       const id = Number(paramid);
 
       this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
+
     }
   }
   goBack(): void {
@@ -47,4 +48,5 @@ export class HeroDetailComponent implements OnInit {
   // save(): void {
   //   this.heroService.update(this.hero).subscribe((hero) => this.goBack());
   // }
+
 }
