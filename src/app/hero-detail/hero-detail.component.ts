@@ -10,9 +10,9 @@ import { HeroService } from 'src/app/services/hero.service';
   styleUrls: ['./hero-detail.component.scss'],
 })
 export class HeroDetailComponent implements OnInit {
-  // ! or | undefined
-  hero!: Hero;
-  isEditing!: boolean;
+  // ! or "| undefined
+  hero: Hero | undefined;
+
 
   constructor(
     private heroService: HeroService,
@@ -25,28 +25,18 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero(): void {
-    const paramid = this.route.snapshot.paramMap.get('id');
-    if (paramid === 'new') {
-      this.isEditing = false;
-      this.hero = { name: '' } as Hero;
-    } else {
-      this.isEditing = true;
-      const id = Number(paramid);
-
-      this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
-
-    }
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+    this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
   }
+
   goBack(): void {
     this.location.back();
   }
 
-  update(): void {
-    this.heroService.update(this.hero).subscribe((hero) => this.goBack());
+  save(): void {
+    if (this.hero) {
+      this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
+    }
   }
-
-  // save(): void {
-  //   this.heroService.update(this.hero).subscribe((hero) => this.goBack());
-  // }
-
 }

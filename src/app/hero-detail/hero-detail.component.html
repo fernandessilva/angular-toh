@@ -1,21 +1,20 @@
-  <h1>{{ isEditing ? "Update" : "Create" }} Hero</h1>
-
+<h1>Update Hero</h1>
+<div *ngIf="hero">
   <mat-card>
     <mat-card-content>
-      <mat-form-field *ngIf="isEditing">
+      <mat-form-field>
         <mat-label>Hero id</mat-label>
-        <input matInput [value]="hero.id" />
+        <input matInput [(ngModel)]="hero.id" />
       </mat-form-field>
     </mat-card-content>
     <mat-card-content flexLayout="column">
       <mat-form-field>
         <mat-label>Hero Name</mat-label>
-        <input matInput [value]="hero.name" />
+        <input matInput [(ngModel)]="hero.name" />
       </mat-form-field>
     </mat-card-content>
-
     <mat-card-actions>
-      <button mat-fab color="warn" (click)="update()" class="save">
+      <button mat-fab color="warn" (click)="save()" class="save">
         <mat-icon>save</mat-icon>
       </button>
       <button mat-fab color="warn" (click)="goBack()" class="back">
@@ -23,3 +22,4 @@
       </button>
     </mat-card-actions>
   </mat-card>
+</div>
