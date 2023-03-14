@@ -1,13 +1,33 @@
-<form>
-  <mat-form-field [style.marginRight]="'10px'">
-    <input matInput placeholder="New Hero" value="" #heroName />
-  </mat-form-field>
-  <button
-    mat-raised-button
-    color="warn"
-    (click)="addHero(heroName.value); heroName.value = ''"
-  >
-    New Hero
-    <mat-icon>add</mat-icon>
-  </button>
-</form>
+<h1>New Hero</h1>
+
+<mat-card class="card">
+  <mat-card-content>
+    <form class="form">
+      <div fxLayout="column">
+        <mat-form-field>
+          <mat-label>Hero name</mat-label>
+          <input matInput placeholder="Insert Hero name" value="" #heroName />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Hero description</mat-label>
+          <textarea matInput placeholder="Describe your hero"></textarea>
+        </mat-form-field>
+      </div>
+
+      <!-- Save and Go Back buttons -->
+
+      <div>
+        <button mat-raised-button (click)="goBack()">Go back</button>
+        <button
+          class="addButton"
+          mat-raised-button
+          color="warn"
+          (click)="addHero(heroName.value); heroName.value = ''"
+        >
+          Add Hero
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

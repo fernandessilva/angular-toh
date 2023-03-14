@@ -1,22 +1,7 @@
 <h1>Heroes</h1>
-
-<!-- <form>
-  <mat-form-field [style.marginRight]="'10px'">
-    <input matInput placeholder="New Hero" value="" #heroName />
-  </mat-form-field>
-  <button
-    mat-raised-button
-    color="warn"
-    (click)="addHero(heroName.value); heroName.value = ''"
-  >
-    New Hero
-    <mat-icon>add</mat-icon>
-  </button>
-</form> -->
-
-
-<button mat-raised-button color="warn" routerLink="/add">New Hero</button>
-
+<div fxLayoutAlign="end" class="newHeroButton">
+<button mat-raised-button color="warn"routerLink="/new" class="addButton">New Hero</button>
+</div>
 
 <mat-table [dataSource]="heroes" class="mat-elevation-z8">
   <!-- Id Column -->

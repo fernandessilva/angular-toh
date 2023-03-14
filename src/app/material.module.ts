@@ -8,6 +8,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 
 
 const MODULES = [
@@ -20,6 +22,8 @@ const MODULES = [
   MatListModule,
   MatInputModule,
   MatTableModule,
+  MatFormFieldModule,
+  MatSelectModule,
 ];
 
 @NgModule({

@@ -4,7 +4,7 @@ import { AddFormComponent } from './add-form/add-form.component';
 import { PageNotFoundComponent } from './core/components/page-not-found.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/heroes', pathMatch: 'full' },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   {
     path: 'dashboard',
     loadChildren: () =>
@@ -16,7 +16,7 @@ const routes: Routes = [
       import('./heroes.module').then((m) => m.HeroesModule),
   },
   {
-    path: 'add', component: AddFormComponent,
+    path: 'new', component: AddFormComponent
   },
 
   {
