@@ -6,13 +6,14 @@ import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
 import { HeroesRoutingModule } from './heroes-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AddFormComponent } from './add-form/add-form.component';
 
 
 
 
 
 @NgModule({
-  declarations: [HeroesComponent, HeroDetailComponent ],
+  declarations: [HeroesComponent, HeroDetailComponent, AddFormComponent ],
   imports: [
     CommonModule, MaterialModule, FormsModule, HeroesRoutingModule, FlexLayoutModule,
   ]

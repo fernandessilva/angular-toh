@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddFormComponent } from './add-form/add-form.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroesComponent } from './heroes/heroes.component';
 
 const routes: Routes = [
   { path: '', component: HeroesComponent },
   { path: ':id', component: HeroDetailComponent },
+  { path: 'new', component: AddFormComponent },
 ];
 
 @NgModule({

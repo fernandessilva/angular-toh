@@ -1,29 +1,31 @@
 <h1>Heroes</h1>
 
-<form>
+<!-- <form>
+  <mat-form-field [style.marginRight]="'10px'">
+    <input matInput placeholder="New Hero" value="" #heroName />
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="warn"
+    (click)="addHero(heroName.value); heroName.value = ''"
+  >
+    New Hero
+    <mat-icon>add</mat-icon>
+  </button>
+</form> -->
 
-    <mat-form-field [style.marginRight]="'10px'" >
-      <input matInput placeholder="New Hero" value="New Hero" #heroName />
-    </mat-form-field>
-    <button
-      mat-raised-button
-      color="warn"
-      (click)="add(heroName.value); heroName.value = ''"
-    >New Hero
-      <mat-icon>add</mat-icon>
-    </button>
 
-</form>
+<button mat-raised-button color="warn" routerLink="/add">New Hero</button>
 
 
 <mat-table [dataSource]="heroes" class="mat-elevation-z8">
-  <!-- User name Definition -->
+  <!-- Id Column -->
   <ng-container matColumnDef="id">
     <mat-header-cell *matHeaderCellDef> ID</mat-header-cell>
     <mat-cell *matCellDef="let row"> {{ row.id }} </mat-cell>
   </ng-container>
 
-  <!-- Age Definition -->
+  <!-- Name Colimn -->
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
     <mat-cell *matCellDef="let row"> {{ row.name }} </mat-cell>
@@ -36,14 +38,20 @@
     *matRowDef="let row; columns: displayedColumns"
   ></mat-row>
 
-  <!-- action buttons -->
+  <!-- Action Buttons -->
   <ng-container matColumnDef="actions" fxLayoutAlign="end end">
     <mat-header-cell *matHeaderCellDef></mat-header-cell>
     <mat-cell *matCellDef="let row">
+
       <button mat-icon-button [routerLink]="['/heroes', row.id]">
         <mat-icon>edit</mat-icon>
       </button>
-      <button title="delete hero" mat-icon-button >
+      <button
+        title="delete hero"
+        mat-icon-button
+        class="delete"
+        (click)="deleteHero(row.id)"
+      >
         <mat-icon color="warn">delete</mat-icon>
       </button>
     </mat-cell>

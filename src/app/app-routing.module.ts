@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddFormComponent } from './add-form/add-form.component';
 import { PageNotFoundComponent } from './core/components/page-not-found.component';
 
 const routes: Routes = [
@@ -14,6 +15,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./heroes.module').then((m) => m.HeroesModule),
   },
+  {
+    path: 'add', component: AddFormComponent,
+  },
+
   {
     path: '**',
     component: PageNotFoundComponent,
