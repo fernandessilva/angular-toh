@@ -7,7 +7,7 @@ export class MessageService {
   private messages: string[] = [];
 
   add(message: string): void {
-    this.messages.push(message);
+    console.log(message)
   }
 
   clear(): void {

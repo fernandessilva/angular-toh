@@ -1,17 +1,17 @@
 <h1>New Hero</h1>
-
-<mat-card class="card">
-  <mat-card-content>
-    <form class="form">
+<form class="form" [formGroup]="form">
+  <mat-card class="card">
+    <mat-card-content>
       <div fxLayout="column">
         <mat-form-field>
           <mat-label>Hero name</mat-label>
-          <input matInput placeholder="Insert Hero name" value="" #heroName />
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Hero description</mat-label>
-          <textarea matInput placeholder="Describe your hero"></textarea>
+          <input
+            matInput
+            placeholder="Insert Hero name"
+            value=""
+            formControlName="name"
+            #heroName
+          />
         </mat-form-field>
       </div>
 
@@ -23,11 +23,11 @@
           class="addButton"
           mat-raised-button
           color="warn"
-          (click)="addHero(heroName.value); heroName.value = ''"
+          (click)="addHero()"
         >
           Add Hero
         </button>
       </div>
-    </form>
-  </mat-card-content>
-</mat-card>
+    </mat-card-content>
+  </mat-card>
+</form>

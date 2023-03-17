@@ -1,5 +1,16 @@
 export interface Hero {
-  id: number;
+  idHero: number;
   name: string;
-  description: string;
+  image: string;
+  category: string | null;
+}
+
+
+export interface HeroPagination {
+  items: Hero[];
+  totalPages: number,
+  nextPage: number | null,
+  previousPage: number | null,
+  page: number,
+  maxfound: number;
 }

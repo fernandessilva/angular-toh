@@ -7,10 +7,12 @@ import { RouterModule } from '@angular/router';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { PageNotFoundComponent } from './components/page-not-found.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { HeroesModule } from '../heroes.module';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 const COMPONENTS = [ToolbarComponent, MessagesComponent, PageNotFoundComponent];
-const MODULES = [FlexLayoutModule, MaterialModule, RouterModule, MatDialogModule];
+const MODULES = [FlexLayoutModule, MaterialModule, RouterModule, MatDialogModule, HeroesModule, SweetAlert2Module.forRoot()];
 
 @NgModule({
   declarations: [COMPONENTS],

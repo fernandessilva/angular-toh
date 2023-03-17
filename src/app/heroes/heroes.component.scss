@@ -4,9 +4,20 @@
 
 h1 {
   margin-left: 20px;
-  margin-bottom: 0;
+  margin-bottom: 30px;
 }
 
+.addbutton {
+  position: relative;
+  padding: 30px;
+  margin-bottom: 30px;
+}
 .newHeroButton {
-margin-bottom: 30px;
+  right: 0;
+  position:absolute;
+
+}
+
+.list {
+  margin-top: 20px;
 }

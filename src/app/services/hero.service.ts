@@ -1,74 +1,46 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { Hero } from '../core/models/hero.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, tap } from 'rxjs/operators';
-import { MessageService } from './message.service';
+import { Observable } from 'rxjs';
+import { Hero, HeroPagination } from '../core/models/hero.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HeroService {
+  // private heroesUrl = 'https://rdo-hmg.norteenergiasa.com.br:8002/api/heroes';
 
-  private heroesUrl = 'api/heroes';
+  constructor(private http: HttpClient) {}
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  };
-
-  constructor(
-    private http: HttpClient,
-    private messageService: MessageService
-  ) {}
-
-  getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl).pipe(
-      tap((_) => this.log('fetched heroes')),
-      catchError(this.handleError<Hero[]>('getHeroes', []))
+  getHeroes(): Observable<HeroPagination> {
+    return this.http.get<HeroPagination>(
+      'https://rdo-hmg.norteenergiasa.com.br:8002/api/Heroes?Limit=100'
     );
   }
 
   getHero(id: number): Observable<Hero> {
-    const url = `${this.heroesUrl}/${id}`;
-    return this.http.get<Hero>(url).pipe(
-      tap((_) => this.log(`fetched hero id=${id}`)),
-      catchError(this.handleError<Hero>(`getHero id=${id}`))
-    );
+    const url = `${'https://rdo-hmg.norteenergiasa.com.br:8002/api/Heroes'}/${id}/hero`;
+
+    return this.http.get<Hero>(url);
   }
 
   addHero(hero: Hero): Observable<Hero> {
-    return this.http.post<Hero>(this.heroesUrl, hero, this.httpOptions).pipe(
-      tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.id}`)),
-      catchError(this.handleError<Hero>('addHero'))
+    return this.http.post<Hero>(
+      'https://rdo-hmg.norteenergiasa.com.br:8002/api/Heroes',
+      hero
     );
   }
 
   deleteHero(id: number): Observable<Hero> {
-    const url = `${this.heroesUrl}/${id}`;
+    const url = `${'https://rdo-hmg.norteenergiasa.com.br:8002/api/Heroes'}/${id}/Hero`;
 
-    return this.http.delete<Hero>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`deleted hero id=${id}`)),
-      catchError(this.handleError<Hero>('deleteHero'))
-    );
+    return this.http.delete<Hero>(url);
   }
 
   updateHero(hero: Hero): Observable<any> {
-    return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
-      tap((_) => this.log(`updated hero id=${hero.id}`)),
-      catchError(this.handleError<any>('updateHero'))
+    return this.http.put(
+      'https://rdo-hmg.norteenergiasa.com.br:8002/api/Heroes',
+      hero
     );
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      this.log(`${operation} failed: ${error.message}`);
-
-      return of(result as T);
-    };
-  }
-
-  private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
   }
 }

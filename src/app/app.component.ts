@@ -7,15 +7,15 @@ import { MenuItem } from './core/models/menu-item.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Angular Project';
-  menuItems: MenuItem [] = [
+  title = 'Tour of Heroes';
+  menuItems: MenuItem[] = [
     {
       icon: 'dashboard',
       routerLink: '/dashboard',
       toolTipText: 'Dashboard',
     },
     {
-      icon: 'sports_martial_arts',
+      icon: 'people',
       routerLink: '/heroes',
       toolTipText: 'Heroes',
     },

@@ -40,7 +40,7 @@
       "extends": [
         "plugin:@angular-eslint/template/recommended"
       ],
-      "rules": {}
+      "rules": {"@typescript-eslint/no-explicit-any": "off"}
     }
   ]
 }
