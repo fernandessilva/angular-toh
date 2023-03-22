@@ -12,9 +12,11 @@ import { HeroService } from '../services/hero.service';
 })
 export class AddFormComponent {
   heroes: Hero[] = [];
+  heroCategory: any = ['Hero', 'Villain']
 
   form = this.fb.group({
     name: ['', Validators.required],
+    category: ['', Validators.required]
   });
 
   constructor(
@@ -33,6 +35,9 @@ export class AddFormComponent {
         });
       });
     }
+  }
+  addCategory(): void {
+
   }
 
   goBack(): void {

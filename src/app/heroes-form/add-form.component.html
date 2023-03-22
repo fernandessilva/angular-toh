@@ -13,17 +13,32 @@
             #heroName
           />
         </mat-form-field>
+        <mat-form-field>
+          <mat-label> Category </mat-label>
+          <mat-select
+          formControlName="category"
+          >
+            <mat-option #heroCategory >{{heroCategory}}</mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
 
       <!-- Save and Go Back buttons -->
 
       <div>
-        <button mat-raised-button (click)="goBack()">Go back</button>
+        <button
+          mat-raised-button
+          (click)="goBack()"
+          aria-label="Return to heroes list"
+        >
+          Cancel
+        </button>
         <button
           class="addButton"
           mat-raised-button
           color="warn"
           (click)="addHero()"
+          aria-label="Create a new hero"
         >
           Add Hero
         </button>

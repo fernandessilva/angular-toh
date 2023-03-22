@@ -16,10 +16,11 @@ export class HeroDetailComponent implements OnInit {
   // ! or "| undefined
   hero: Hero | undefined;
 
+
   form = this.fb.group({
     idHero: [{ value: '', disabled: true }],
     name: ['', Validators.required],
-  });
+     });
 
   constructor(
     private fb: FormBuilder,
@@ -30,26 +31,27 @@ export class HeroDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHero();
+
   }
 
   getHero(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!);
-    this.heroService.getHero(id).subscribe((hero) => {
+    this.heroService.getHero(id).subscribe((hero: any) => {
       this.hero = hero;
-      this.form.controls['idHero'].setValue(`${hero.idHero}`);
-      this.form.controls['name'].setValue(hero.name);
+
+      this.form.patchValue(hero);
+      // this.form.controls['idHero'].setValue(`${hero.idHero}`);
+      // this.form.controls['name'].setValue(hero.name);
+      console.log(hero)
     });
   }
 
   update(): void {
-    Swal.fire('Are you sure you want to update the hero?', 'question').then(
-      (result) => {
-        if (result.isConfirmed && this.hero) {
-
-          this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
-        }
+    Swal.fire('Updated!', 'Hero has been changed!', 'success').then((result) => {
+      if (result.isConfirmed && this.hero) {
+        this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
       }
-    );
+    });
   }
 
   goBack(): void {

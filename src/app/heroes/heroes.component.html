@@ -1,7 +1,13 @@
 <h1>Heroes</h1>
 <div class="addbutton">
   <div class="newHeroButton">
-    <button mat-raised-button color="warn" routerLink="/new" class="addButton">
+    <button
+      mat-raised-button
+      color="warn"
+      routerLink="/new"
+      class="addButton"
+      aria-label="Create a new hero"
+    >
       New Hero
     </button>
   </div>
@@ -20,11 +26,21 @@
       <mat-cell *matCellDef="let hero"> {{ hero.name }} </mat-cell>
     </ng-container>
 
+    <!-- Category Column
+    <ng-container matColumnDef="Category">
+      <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+      <mat-cell *matCellDef="let hero"> {{ hero.category }} </mat-cell>
+    </ng-container> -->
+
     <!-- Buttons Column -->
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>Update Hero</mat-header-cell>
       <mat-cell *matCellDef="let hero">
-        <button mat-icon-button [routerLink]="['/heroes', hero.idHero]">
+        <button
+          mat-icon-button
+          [routerLink]="['/heroes', hero.idHero]"
+          aria-label="Edit Hero"
+        >
           <mat-icon>edit</mat-icon>
         </button>
         <button
@@ -32,6 +48,7 @@
           mat-icon-button
           class="delete"
           (click)="deleteHero(hero.idHero)"
+          aria-label="Delete Hero"
         >
           <mat-icon color="warn">delete</mat-icon>
         </button>

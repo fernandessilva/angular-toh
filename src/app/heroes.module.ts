@@ -6,7 +6,7 @@ import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeroesRoutingModule } from './heroes-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { AddFormComponent } from './add-form/add-form.component';
+import { AddFormComponent } from './heroes-form/add-form.component';
 
 @NgModule({
   declarations: [HeroesComponent, HeroDetailComponent, AddFormComponent],

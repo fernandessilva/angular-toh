@@ -12,6 +12,7 @@ export class HeroesComponent implements OnInit {
   displayedColumns: string[] = ['idHero', 'name', 'actions'];
   heroes: Hero[] = [];
 
+
   constructor(private heroService: HeroService) {}
 
   ngOnInit(): void {
@@ -27,6 +28,7 @@ export class HeroesComponent implements OnInit {
   }
 
   deleteHero(id: number): void {
+
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
