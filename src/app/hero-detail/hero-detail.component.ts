@@ -47,10 +47,12 @@ export class HeroDetailComponent implements OnInit {
   }
 
   update(): void {
-    Swal.fire('Updated!', 'Hero has been changed!', 'success').then((result) => {
+    Swal.fire('Your hero will be changed!', 'Are you sure?', 'question').then((result) => {
       if (result.isConfirmed && this.hero) {
-        this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
-      }
+        this.heroService.updateHero(this.hero).subscribe(() => {
+          Swal.fire('Deleted!', 'Your hero has been deleted.', 'success')
+          this.goBack();
+      })}
     });
   }
 

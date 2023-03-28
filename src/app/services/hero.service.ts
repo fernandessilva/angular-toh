@@ -12,11 +12,10 @@ export class HeroService {
 
   constructor(private http: HttpClient) {}
 
-  getHeroes(): Observable<HeroPagination> {
-    return this.http.get<HeroPagination>(
-      'https://rdo-hmg.norteenergiasa.com.br:8002/api/Heroes?Limit=100'
-    );
-  }
+  getHeroes(pageIndex: number, pageSize: number): Observable<HeroPagination> {
+  const url = `https://rdo-hmg.norteenergiasa.com.br:8002/api/Heroes?Limit=${pageSize}&page=${pageIndex}`;
+  return this.http.get<HeroPagination>(url);
+}
 
   getHero(id: number): Observable<Hero> {
     const url = `${'https://rdo-hmg.norteenergiasa.com.br:8002/api/Heroes'}/${id}/hero`;

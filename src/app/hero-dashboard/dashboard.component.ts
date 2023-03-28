@@ -17,8 +17,9 @@ export class DashboardComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService
-      .getHeroes()
-      .subscribe((heroes) => (this.heroes =  heroes.items.slice(0,8)));
+    const pageIndex = 0;
+    const pageSize = 8;
+    this.heroService.getHeroes(pageIndex, pageSize)
+      .subscribe((heroes) => (this.heroes = heroes.items));
   }
 }

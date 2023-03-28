@@ -1,5 +1,8 @@
+import { ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { Hero, HeroPagination } from 'src/app/core/models/hero.model';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { Hero, HeroPagination, IPaginationList } from 'src/app/core/models/hero.model';
 import { HeroService } from 'src/app/services/hero.service';
 import Swal from 'sweetalert2';
 
@@ -9,26 +12,35 @@ import Swal from 'sweetalert2';
   styleUrls: ['./heroes.component.scss'],
 })
 export class HeroesComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns: string[] = ['idHero', 'name', 'actions'];
   heroes: Hero[] = [];
+  heroPagination: HeroPagination;
 
 
   constructor(private heroService: HeroService) {}
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.listHeroes();
   }
 
-  getHeroes(): void {
-    this.heroService.getHeroes().subscribe((heroes: HeroPagination) => {
+  listHeroes(event?: PageEvent): void {
+    const pageIndex = event ? event.pageIndex : 1;
+    const pageSize = event ? event.pageSize : 10;
 
-      console.log(heroes.items)
-      this.heroes = heroes.items;
-    });
+    this.heroService
+      .getHeroes(pageIndex, pageSize)
+      .subscribe((heroes: HeroPagination) => {
+        console.log(heroes.items);
+
+        this.heroes = heroes.items;
+        this.heroPagination = heroes;
+        this.paginator.length = this.heroPagination.maxfound;
+        this.paginator.pageSize = pageSize
+      });
   }
 
   deleteHero(id: number): void {
-
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -40,8 +52,9 @@ export class HeroesComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.heroService.deleteHero(id).subscribe(() => {
-          // this.heroes = this.heroes.filter((hero) => hero.idHero !== id);
           Swal.fire('Deleted!', 'Your hero has been deleted.', 'success');
+          // Refresh the list of heroes after deletion
+          this.listHeroes();
         });
       }
       console.log(result);

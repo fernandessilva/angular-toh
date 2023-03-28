@@ -1,4 +1,4 @@
-<h1>Heroes</h1>
+<mat-toolbar>Heroes</mat-toolbar>
 <div class="addbutton">
   <div class="newHeroButton">
     <button
@@ -14,7 +14,7 @@
 </div>
 
 <div class="list">
-  <mat-table #table [dataSource]="heroes">
+  <mat-table #table [dataSource]="heroes" class="mat-elevation-z8">
     <ng-container matColumnDef="idHero">
       <mat-header-cell *matHeaderCellDef> Hero id </mat-header-cell>
       <mat-cell *matCellDef="let hero"> {{ hero.idHero }} </mat-cell>
@@ -25,12 +25,6 @@
       <mat-header-cell *matHeaderCellDef> Hero name </mat-header-cell>
       <mat-cell *matCellDef="let hero"> {{ hero.name }} </mat-cell>
     </ng-container>
-
-    <!-- Category Column
-    <ng-container matColumnDef="Category">
-      <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
-      <mat-cell *matCellDef="let hero"> {{ hero.category }} </mat-cell>
-    </ng-container> -->
 
     <!-- Buttons Column -->
     <ng-container matColumnDef="actions">
@@ -62,4 +56,9 @@
       *matRowDef="let hero; columns: displayedColumns"
     ></mat-row>
   </mat-table>
+
+  <mat-paginator
+
+    (page)="listHeroes($event)"
+  ></mat-paginator>
 </div>
