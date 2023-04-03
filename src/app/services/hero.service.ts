@@ -13,9 +13,9 @@ export class HeroService {
   constructor(private http: HttpClient) {}
 
   getHeroes(pageIndex: number, pageSize: number): Observable<HeroPagination> {
-  const url = `https://rdo-hmg.norteenergiasa.com.br:8002/api/Heroes?Limit=${pageSize}&page=${pageIndex}`;
-  return this.http.get<HeroPagination>(url);
-}
+    const url = `https://rdo-hmg.norteenergiasa.com.br:8002/api/Heroes?Limit=${pageSize}&page=${pageIndex}`;
+    return this.http.get<HeroPagination>(url);
+  }
 
   getHero(id: number): Observable<Hero> {
     const url = `${'https://rdo-hmg.norteenergiasa.com.br:8002/api/Heroes'}/${id}/hero`;

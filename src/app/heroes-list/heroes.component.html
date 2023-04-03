@@ -58,7 +58,7 @@
   </mat-table>
 
   <mat-paginator
-
+  [pageSizeOptions]="[5, 10, 15, 20, 25]"
     (page)="listHeroes($event)"
   ></mat-paginator>
 </div>

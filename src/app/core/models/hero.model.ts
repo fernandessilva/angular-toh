@@ -11,20 +11,6 @@ export interface HeroPagination {
   nextPage: number | null;
   previousPage: number | null;
   page: number;
-  maxfound: number;
-  limit: number | null;
-}
-
-export interface IPaginationList {
-  totalPages: number | null;
-
-  nextPage: number | null;
-
-  previousPage: number | null;
-
-  page: number | null;
-
-  maxFound: number | null;
-
+  maxFound: number;
   limit: number | null;
 }

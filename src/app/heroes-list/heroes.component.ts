@@ -1,8 +1,7 @@
 import { ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { Hero, HeroPagination, IPaginationList } from 'src/app/core/models/hero.model';
+import { Hero, HeroPagination } from 'src/app/core/models/hero.model';
 import { HeroService } from 'src/app/services/hero.service';
 import Swal from 'sweetalert2';
 
@@ -25,8 +24,9 @@ export class HeroesComponent implements OnInit {
   }
 
   listHeroes(event?: PageEvent): void {
-    const pageIndex = event ? event.pageIndex : 1;
+    const pageIndex = event ? event.pageIndex +1 : 1;
     const pageSize = event ? event.pageSize : 10;
+
 
     this.heroService
       .getHeroes(pageIndex, pageSize)
@@ -35,8 +35,9 @@ export class HeroesComponent implements OnInit {
 
         this.heroes = heroes.items;
         this.heroPagination = heroes;
-        this.paginator.length = this.heroPagination.maxfound;
+        this.paginator.length = this.heroPagination.maxFound;
         this.paginator.pageSize = pageSize
+
       });
   }
 

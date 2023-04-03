@@ -8,19 +8,22 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () =>
-      import('./hero-dashboard/dashboard.module').then((m) => m.DashboardModule),
+      import('./hero-dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
   },
   {
     path: 'heroes',
-    loadChildren: () =>
-      import('./heroes.module').then((m) => m.HeroesModule),
+    loadChildren: () => import('./heroes.module').then((m) => m.HeroesModule),
   },
   {
-    path: 'new', component: AddFormComponent
+    path: 'new',
+    component: AddFormComponent,
   },
 
   {
     path: '**',
+    pathMatch: 'full',
     component: PageNotFoundComponent,
   },
 ];
