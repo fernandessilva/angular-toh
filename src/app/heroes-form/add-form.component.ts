@@ -15,7 +15,7 @@ export class AddFormComponent {
 
   form = this.fb.group({
     name: ['', Validators.required],
-    category: ['', Validators.required],
+
   });
 
   constructor(
@@ -26,7 +26,7 @@ export class AddFormComponent {
 
   addHero(): void {
     const { valid, value } = this.form;
-
+debugger
     if (valid) {
       this.heroService.addHero(value as Hero).subscribe(() => {
         Swal.fire('Congrats!', 'You have added a hero', 'success').then(() => {
