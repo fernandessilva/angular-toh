@@ -1,9 +1,9 @@
-<h1>New Hero</h1>
 <form class="form" [formGroup]="form">
   <mat-card class="card">
+    <mat-card-title class="mat-card-title">Create a new hero</mat-card-title>
     <mat-card-content>
       <div fxLayout="column">
-        <mat-form-field>
+        <mat-form-field class="mat-card-form-field">
           <mat-label>Hero name</mat-label>
           <input
             matInput
@@ -18,7 +18,7 @@
 
       <!-- Save and Go Back buttons -->
 
-      <div>
+      <div class="button">
         <button
           mat-raised-button
           (click)="goBack()"
@@ -26,8 +26,7 @@
         >
           Cancel
         </button>
-        <button
-          class="addButton"
+        <button class="addButton"
           mat-raised-button
           color="primary"
           (click)="addHero()"

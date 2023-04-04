@@ -1,13 +1,19 @@
-h1 {
-  margin-left: 20px;
-  margin-bottom: 0;
-}
-.card {
-  margin-top: 20px;
-}
 
+  .card {
+    width: 30rem ;
+    border-radius: 0.5rem;
+    padding: 3rem;
+    .mat-card-title {
+      font-size: 30px;
+      line-height: 40px;
+    }
+    .mat-card-form-field {
+      margin: 0.5rem 0;
+      width: 100%;
+    }
 
 .addButton {
   margin-left: 10px;
+}
 }
 
