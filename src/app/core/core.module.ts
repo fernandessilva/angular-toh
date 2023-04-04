@@ -5,17 +5,27 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { RouterModule } from '@angular/router';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { PageNotFoundComponent } from './components/page-not-found.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { HeroesModule } from '../heroes.module';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MaterialModule } from '../material.module';
+import { ToggleComponent } from './components/toggle/toggle.component';
+import { FormsModule } from '@angular/forms';
 
 
 const COMPONENTS = [ToolbarComponent, MessagesComponent, PageNotFoundComponent];
-const MODULES = [FlexLayoutModule, MaterialModule, RouterModule, MatDialogModule, HeroesModule, SweetAlert2Module.forRoot()];
+const MODULES = [
+  FlexLayoutModule,
+  MaterialModule,
+  RouterModule,
+  MatDialogModule,
+  HeroesModule,
+  SweetAlert2Module.forRoot(),
+  FormsModule,
+];
 
 @NgModule({
-  declarations: [COMPONENTS],
+  declarations: [COMPONENTS, ToggleComponent],
   imports: [MODULES, CommonModule],
   exports: [COMPONENTS, MODULES],
 })

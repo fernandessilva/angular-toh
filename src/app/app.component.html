@@ -1,6 +1,8 @@
-<app-toolbar [title]="title" [menuItems]="menuItems"></app-toolbar>
-
-<div class="content" fxLayoutGap="15px">
-  <router-outlet></router-outlet>
-
+<div class="mat-typography app-frame mat-app-background">
+  <app-toolbar [title]="title" [menuItems]="menuItems"></app-toolbar>
+  <main>
+    <div class="content" fxLayoutGap="15px">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
 </div>
