@@ -1,5 +1,6 @@
 <h2>Heroes</h2>
-<div class="addbutton">
+
+<div class="container">
   <div class="newHeroButton">
     <button
       mat-raised-button
@@ -11,24 +12,37 @@
       New Hero
     </button>
   </div>
+  <div class="searchInput">
+    <mat-form-field >
+      <input
+        matInput
+        placeholder="Search your hero"
+        autocomplete="off"
+      />
+
+    </mat-form-field>
+  </div>
 </div>
 
 <div class="list">
-  <mat-table #table [dataSource]="heroes" class="mat-elevation-z8">
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
     <ng-container matColumnDef="idHero">
-      <mat-header-cell *matHeaderCellDef> Hero id </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Hero id
+      </mat-header-cell>
       <mat-cell *matCellDef="let hero"> {{ hero.idHero }} </mat-cell>
     </ng-container>
 
-    <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Hero name </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Hero name
+      </mat-header-cell>
       <mat-cell *matCellDef="let hero"> {{ hero.name }} </mat-cell>
     </ng-container>
 
     <!-- Buttons Column -->
     <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef>Update Hero</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let hero">
         <button
           mat-icon-button
@@ -58,7 +72,8 @@
   </mat-table>
 
   <mat-paginator
-  [pageSizeOptions]="[5, 10, 15, 20, 25]"
+    [pageSizeOptions]="[5, 10, 20, 25, 50]"
+    showFirstLastButtons
     (page)="listHeroes($event)"
   ></mat-paginator>
 </div>

@@ -1,9 +1,18 @@
 .card {
   margin-top: 20px;
-  width: 30rem ;
-  border-radius: 0.5rem;
-}
+  width: 400px ;
+  border-radius: 8px;
+  padding: 20px;
 
+  .mat-card-title {
+    font-size: 30px;
+    line-height: 40px;
+  }
+  .mat-card-form-field {
+    margin: 8px 0;
+    width: 100%;
+  }
+}
 .save {
 margin-left: 10px;
 margin-bottom: 5px;
@@ -13,9 +22,4 @@ margin-top: 0;
 margin-left: 10px;
 margin-bottom: 5px;
 margin-top: 0;
-}
-
-h1 {
-  margin-left: 20px;
-  margin-bottom: 0;
 }

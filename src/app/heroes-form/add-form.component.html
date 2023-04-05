@@ -2,39 +2,32 @@
   <mat-card class="card">
     <mat-card-title class="mat-card-title">Create a new hero</mat-card-title>
     <mat-card-content>
-      <div fxLayout="column">
-        <mat-form-field class="mat-card-form-field">
-          <mat-label>Hero name</mat-label>
-          <input
-            matInput
-            placeholder="Insert Hero name"
-            value=""
-            formControlName="name"
-            #heroName
-          />
-        </mat-form-field>
-
-      </div>
-
-      <!-- Save and Go Back buttons -->
-
-      <div class="button">
-        <button
-          mat-raised-button
-          (click)="goBack()"
-          aria-label="Return to heroes list"
-        >
-          Cancel
-        </button>
-        <button class="addButton"
-          mat-raised-button
-          color="primary"
-          (click)="addHero()"
-          aria-label="Create a new hero"
-        >
-          Add Hero
-        </button>
-      </div>
+      <mat-form-field class="mat-card-form-field">
+        <mat-label>Hero name</mat-label>
+        <input
+          matInput
+          placeholder="Insert Hero name"
+          value=""
+          formControlName="name"
+          #heroName
+        />
+      </mat-form-field>
+      <button
+        mat-raised-button
+        (click)="goBack()"
+        aria-label="Return to heroes list"
+      >
+        Cancel
+      </button>
+      <button
+        class="addButton"
+        mat-raised-button
+        color="primary"
+        (click)="addHero()"
+        aria-label="Create a new hero"
+      >
+        Add Hero
+      </button>
     </mat-card-content>
   </mat-card>
 </form>

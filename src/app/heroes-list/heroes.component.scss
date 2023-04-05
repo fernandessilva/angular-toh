@@ -7,17 +7,21 @@ h1 {
   margin-bottom: 30px;
 }
 
-.addbutton {
+.container {
   position: relative;
-  padding: 30px;
-  margin-bottom: 30px;
-}
-.newHeroButton {
-  right: 0;
-  position:absolute;
+  padding: 2px;
 
-}
+  .newHeroButton {
+    right: 0;
+    position: absolute;
+    padding: 20px;
+  }
+  }
+  .searchInput {
+    left: 0;
 
+
+  }
 .list {
   margin-top: 20px;
 }
