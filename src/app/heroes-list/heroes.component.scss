@@ -16,12 +16,19 @@ h1 {
     position: absolute;
     padding: 20px;
   }
-  }
-  .searchInput {
-    left: 0;
+}
 
+.searchInput {
+  left: 0;
+  position: relative;
 
+  .searchButton {
+    position: absolute;
+    padding: 12px;
+    margin: 12px;
   }
-.list {
+}
+
+.table {
   margin-top: 20px;
 }

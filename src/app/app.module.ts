@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxWebstorageModule.forRoot(),
+    //NgxWebstorageModule.forRoot({ prefix: 'custom', separator: '.', caseSensitive:true })
+    // The forRoot method allows to configure the prefix, the separator and the caseSensitive option used by the library
+    // Default values:
+    // prefix: "ngx-webstorage"
+    // separator: "|"
+    // caseSensitive: false
   ],
   providers: [],
   bootstrap: [AppComponent],

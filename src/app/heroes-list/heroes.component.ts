@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -13,26 +13,28 @@ import Swal from 'sweetalert2';
   styleUrls: ['./heroes.component.scss'],
 })
 export class HeroesComponent implements OnInit {
+  @ViewChild('filterName') filterName: ElementRef;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatSort) set matSort(sort: MatSort) {
     if (!this.dataSource.sort) {
-        this.dataSource.sort = sort;
+      this.dataSource.sort = sort;
     }
-}
+  }
 
   displayedColumns: string[] = ['idHero', 'name', 'actions'];
   dataSource: MatTableDataSource<Hero> = new MatTableDataSource<Hero>();
   heroPagination: HeroPagination;
-  searchWord: string
 
   constructor(private heroService: HeroService) {}
 
   ngOnInit(): void {
     this.listHeroes();
     this.dataSource.sort = this.sort;
-
-
+    const filterValue = localStorage.getItem('filterValue');
+    if (filterValue) {
+      this.filterName.nativeElement.value = filterValue;
+    }
   }
 
   listHeroes(event?: PageEvent): void {
@@ -49,7 +51,26 @@ export class HeroesComponent implements OnInit {
         this.heroPagination = heroes;
         this.paginator.length = this.heroPagination.maxFound;
         this.paginator.pageSize = pageSize;
+      });
+  }
 
+  filterTable() {
+    const pageSize = this.paginator.pageSize;
+    const name = this.filterName.nativeElement.value.trim().toLowerCase();
+    localStorage.setItem(
+      'filterValue',
+      this.filterName.nativeElement.value.trim().toLowerCase()
+    );
+    this.heroService
+      .getHeroes(1, pageSize, name)
+      .subscribe((heroes: HeroPagination) => {
+        console.log(heroes.items);
+
+        this.dataSource.data = heroes.items;
+
+        this.heroPagination = heroes;
+        this.paginator.length = this.heroPagination.maxFound;
+        this.paginator.pageSize = pageSize;
       });
   }
 

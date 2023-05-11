@@ -1,4 +1,5 @@
 <h2>Heroes</h2>
+<!-- search and new hero button -->
 
 <div class="container">
   <div class="newHeroButton">
@@ -12,20 +13,32 @@
       New Hero
     </button>
   </div>
+
   <div class="searchInput">
-    <mat-form-field >
+    <mat-form-field>
       <input
         matInput
         placeholder="Search your hero"
         autocomplete="off"
-      />
+        #filterName
 
+      />
     </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="filterTable()"
+      class="searchButton"
+    >Search
+      <mat-icon>search</mat-icon>
+    </button>
   </div>
 </div>
 
-<div class="list">
+<!-- table -->
+<div class="table">
   <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+    <!-- hero Id Column -->
     <ng-container matColumnDef="idHero">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Hero id
@@ -33,6 +46,7 @@
       <mat-cell *matCellDef="let hero"> {{ hero.idHero }} </mat-cell>
     </ng-container>
 
+    <!-- hero Name Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Hero name
@@ -71,6 +85,7 @@
     ></mat-row>
   </mat-table>
 
+  <!-- paginator -->
   <mat-paginator
     [pageSizeOptions]="[5, 10, 20, 25, 50]"
     showFirstLastButtons
